@@ -2,6 +2,16 @@ import { loadList, loadDetails } from './api';
 import { getDetailsContentLayout } from './details';
 import { createFilterControl } from './filter';
 
+import { logger } from '../utils/really-simple-logger';
+const log = logger('map.js')
+
+/**
+ * 
+ * @param {Object} ymaps
+ * @param {String} containerId 
+ * 
+ * Инициализирует карту
+ */
 export function initMap(ymaps, containerId) {
   const myMap = new ymaps.Map(containerId, {
     center: [55.76, 37.64],
@@ -22,6 +32,7 @@ export function initMap(ymaps, containerId) {
   objectManager.clusters.options.set('preset', 'islands#greenClusterIcons');
 
   loadList().then(data => {
+    log('adding data to objectManager', 'initMap', 'info', data)
     objectManager.add(data);
   });
 
@@ -39,7 +50,7 @@ export function initMap(ymaps, containerId) {
       });
     }
   });
-
+  
   // filters
   const listBoxControl = createFilterControl(ymaps);
   myMap.controls.add(listBoxControl);

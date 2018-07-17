@@ -1,6 +1,9 @@
-import initMap from "./map";
+import { initMap } from "./map";
+
+import { logger } from '../utils/really-simple-logger'
+const log = logger('index.js');
 
 ymaps.ready(() => {
   initMap(ymaps, "map");
-  console.log("inited");
+  log('map initialized', 'ymaps.ready(callback)');
 });

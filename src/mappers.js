@@ -1,4 +1,8 @@
+import { logger } from '../utils/really-simple-logger';
+const log = logger('mappers.js');
+
 export function mapServerData(serverData) {
+  log('mapServerData recieved argument', 'mapServerData', 'info', serverData)
   return {
     type: "FeatureCollection",
     features: serverData.map((obj, index) => ({
