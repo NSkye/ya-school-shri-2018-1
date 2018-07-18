@@ -39,8 +39,8 @@ export function createChart(container, data, isActive) {
             display: false
         },
         scales: {
-            xAxes: [{ ticks: { display: false } }],
-            yAxes: [{ ticks: { beginAtZero: true, max: 0 } }]
+            xAxes: [{ ticks: { beginAtZero: true, display: false } }],
+            yAxes: [{ ticks: { beginAtZero: true, max: Math.max(...data) } }]
         }
     }
   });
