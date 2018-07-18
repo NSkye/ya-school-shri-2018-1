@@ -6,8 +6,8 @@ const log = logger('api.js');
 export function loadList() {
   return fetch('/api/stations')
     .then(response => {
-      log(`fetched list of stations`, 'loadList', 'info', JSON.stringify(response))
-      return response.json()
+      log(`fetched list of stations`, 'loadList', 'info');
+      return response.json();
     })
     .then(mapServerData);
 }
@@ -15,7 +15,7 @@ export function loadList() {
 export function loadDetails(id) 
 {
   return fetch(`/api/stations/${id}`).then(response => {
-    log(`fetched data for station ${id}`, 'loadDetails');
-    return response.json()
+    log(`fetched data for station ${id}`, 'loadDetails', 'info');
+    return response.json();
   });
 }

@@ -1,6 +1,7 @@
 import { loadList, loadDetails } from './api';
 import { getDetailsContentLayout } from './details';
 import { createFilterControl } from './filter';
+import { getPopupContent } from './popup';
 
 import { logger } from '../utils/really-simple-logger';
 const log = logger('map.js')
@@ -44,6 +45,7 @@ export function initMap(ymaps, containerId) {
 
   // details
   objectManager.objects.events.add('click', event => {
+    log('station was clicked', 'objectManager.objects.events.add', 'info', event.get('objectId'))
     const objectId = event.get('objectId');
     const obj = objectManager.objects.getById(objectId);
 
@@ -52,6 +54,7 @@ export function initMap(ymaps, containerId) {
     if (!obj.properties.details) {
       loadDetails(objectId).then(data => {
         obj.properties.details = data;
+        log(`loaded details for station ${event.get('objectId')}`, 'loadDetails(objectId).then()', 'info', obj)
         objectManager.objects.balloon.setData(obj);
       });
     }
