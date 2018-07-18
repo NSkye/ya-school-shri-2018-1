@@ -1,6 +1,10 @@
 import { logger } from '../utils/really-simple-logger';
 const log = logger('mappers.js');
 
+/**
+ * Преобразует данные с сервера в объекты для карты
+ * @param {Object} serverData данные полученные с сервера
+ */
 export function mapServerData(serverData) {
   log('mapServerData recieved argument', 'mapServerData', 'info', serverData)
   return {
@@ -12,7 +16,7 @@ export function mapServerData(serverData) {
       geometry: 
       {
         type: "Point",
-        coordinates: [obj.long, obj.lat]
+        coordinates: [obj.lat, obj.long] //тут координаты менялись местами, больше они этого делать не будут, они обещали
       },
       properties: {
         iconCaption: obj.serialNumber
