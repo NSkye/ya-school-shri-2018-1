@@ -246,9 +246,11 @@ const chart = new Chart(ctx, {
 ```
 ##### 2. Убрать максимальное значение вообще
 ```javascript
+/* ... */
         scales: {
                     xAxes: [{ ticks: { display: false } }],
                     yAxes: [{ ticks: { beginAtZero: true } }]
+/* ... */
 ```
 Дело вкуса, конечно, мне первый вариант нравится больше. Практически не увеличивает количество кода, но графики красивее.
 <a id="issue71" href=""></a>
